@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1820">
+  <meta name="description" content="为网络与新媒体、电影学背景定制的台州、杭州、宁波编制、高校、事业单位及国企岗位追踪工具。">
+  <title>浙里有岗 · 编制高校国企岗位雷达</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%230b1820'/%3E%3Ccircle cx='32' cy='32' r='19' fill='none' stroke='%2344d7b6' stroke-width='4'/%3E%3Cpath d='M32 32 45 20M32 32l-7 15' stroke='%23ffb24a' stroke-width='4' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='32' r='4' fill='white'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --ink: #0b1820;
+      --ink-2: #132a35;
+      --paper: #f4f7f4;
+      --white: #ffffff;
+      --muted: #64757c;
+      --line: #d9e1df;
+      --teal: #087f73;
+      --teal-soft: #dff5ef;
+      --mint: #44d7b6;
+      --amber: #e78020;
+      --amber-soft: #fff0dc;
+      --red: #bd3e40;
+      --shadow: 0 18px 60px rgba(11, 24, 32, .09);
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.55;
+    }
+    button, input, select { font: inherit; }
+    button, select { cursor: pointer; }
+    button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible {
+      outline: 3px solid rgba(8, 127, 115, .28);
+      outline-offset: 2px;
+    }
+    .masthead {
+      background: var(--ink);
+      color: white;
+      padding: 22px clamp(18px, 4vw, 52px) 76px;
+      position: relative;
+      overflow: hidden;
+    }
+    .masthead::after {
+      content: "";
+      position: absolute;
+      width: 460px;
+      height: 460px;
+      border: 1px solid rgba(68, 215, 182, .2);
+      border-radius: 50%;
+      right: -190px;
+      top: -220px;
+      box-shadow: 0 0 0 52px rgba(68, 215, 182, .04), 0 0 0 104px rgba(68, 215, 182, .025);
+    }
+    .topline, .hero, main { max-width: 1240px; margin-inline: auto; }
+    .topline { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 760; letter-spacing: .02em; }
+    .radar-mark { width: 34px; height: 34px; color: var(--mint); }
+    .update-pill { font-size: .82rem; color: #bed0d5; border: 1px solid #36505a; border-radius: 999px; padding: 6px 11px; }
+    .hero { position: relative; z-index: 1; display: grid; grid-template-columns: 1.35fr .65fr; gap: 48px; padding-top: 60px; align-items: end; }
+    .eyebrow { color: var(--mint); font-weight: 720; font-size: .82rem; letter-spacing: .18em; text-transform: uppercase; }
+    h1 { font-family: ui-serif, "Songti SC", STSong, serif; font-size: clamp(2.65rem, 6vw, 5.2rem); line-height: .98; margin: 13px 0 20px; font-weight: 760; max-width: 850px; letter-spacing: -.035em; }
+    .hero-copy { margin: 0; max-width: 660px; color: #b8c9cf; font-size: 1rem; }
+    .profile-card { border-left: 1px solid #36505a; padding-left: 28px; color: #d8e3e6; }
+    .profile-card span { display: block; color: #7f969f; font-size: .76rem; letter-spacing: .1em; margin-bottom: 8px; }
+    .profile-card p { margin: 4px 0; font-size: .94rem; }
+    main { padding: 0 clamp(18px, 4vw, 52px) 70px; margin-top: -42px; position: relative; z-index: 2; }
+    .control-deck { background: var(--white); border: 1px solid rgba(217,225,223,.9); border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-bottom: 1px solid var(--line); padding-bottom: 18px; margin-bottom: 18px; }
+    .stat { padding: 0 20px; border-right: 1px solid var(--line); }
+    .stat:first-child { padding-left: 4px; }
+    .stat:last-child { border-right: 0; }
+    .stat-label { color: var(--muted); font-size: .8rem; }
+    .stat-value { font-size: 1.7rem; font-weight: 760; margin-top: 2px; font-variant-numeric: tabular-nums; }
+    .filters { display: grid; grid-template-columns: minmax(220px, 1.65fr) repeat(3, minmax(140px, .7fr)); gap: 12px; }
+    .field { position: relative; }
+    .field label { position: absolute; left: 13px; top: 7px; color: var(--muted); font-size: .7rem; z-index: 1; }
+    .field input, .field select { width: 100%; min-height: 58px; border: 1px solid var(--line); border-radius: 12px; background: #fbfcfb; padding: 23px 12px 7px; color: var(--ink); font-size: .92rem; }
+    .field input::placeholder { color: #95a3a7; }
+    .content-grid { display: grid; grid-template-columns: minmax(0, 1fr) 276px; gap: 22px; margin-top: 22px; }
+    .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin: 18px 2px 14px; }
+    .section-head h2 { font-family: ui-serif, "Songti SC", STSong, serif; margin: 0; font-size: 1.6rem; }
+    .section-head small { color: var(--muted); }
+    .job-list { display: grid; gap: 12px; }
+    .job-card { background: white; border: 1px solid var(--line); border-radius: 16px; padding: 21px; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+    .job-card:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(11,24,32,.07); border-color: #b8ceca; }
+    .job-top { display: grid; grid-template-columns: 1fr auto; gap: 16px; }
+    .company { color: var(--teal); font-weight: 700; font-size: .84rem; margin-bottom: 6px; }
+    .job-title { margin: 0; font-size: 1.2rem; line-height: 1.35; }
+    .deadline { text-align: right; min-width: 106px; }
+    .deadline span { color: var(--muted); font-size: .72rem; display: block; }
+    .deadline strong { font-size: .92rem; font-weight: 730; }
+    .job-meta, .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .meta { color: #506269; font-size: .82rem; }
+    .meta:not(:last-child)::after { content: "·"; padding-left: 8px; color: #a9b5b7; }
+    .tag { font-size: .75rem; border-radius: 999px; padding: 4px 9px; background: #edf2f1; color: #43565c; }
+    .tag.high { background: var(--teal-soft); color: #06685e; }
+    .tag.try { background: var(--amber-soft); color: #9e5514; }
+    .job-note { color: #52646b; font-size: .86rem; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #edf1f0; }
+    .job-actions { display: flex; gap: 9px; margin-top: 15px; }
+    .action, .primary-link { border-radius: 10px; min-height: 38px; padding: 8px 12px; font-size: .84rem; font-weight: 680; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--line); }
+    .action { background: white; color: var(--ink); }
+    .action.active { background: var(--ink); border-color: var(--ink); color: white; }
+    .primary-link { background: var(--teal); border-color: var(--teal); color: white; margin-left: auto; }
+    .side-panel { position: sticky; top: 18px; align-self: start; display: grid; gap: 14px; }
+    .side-card { border-radius: 16px; padding: 18px; background: var(--ink-2); color: white; }
+    .side-card.light { background: white; color: var(--ink); border: 1px solid var(--line); }
+    .side-card h3 { margin: 0 0 10px; font-size: .98rem; }
+    .side-card p { margin: 0; color: #b5c7cc; font-size: .83rem; }
+    .side-card.light p { color: var(--muted); }
+    .schedule { display: flex; gap: 10px; align-items: center; margin-top: 14px; padding-top: 14px; border-top: 1px solid #35505a; }
+    .pulse { width: 10px; height: 10px; flex: none; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 5px rgba(68,215,182,.12); }
+    .schedule strong { display: block; font-size: .88rem; }
+    .schedule span { display: block; color: #92abb2; font-size: .73rem; }
+    .side-actions { display: grid; gap: 8px; margin-top: 13px; }
+    .wide-action { width: 100%; border: 1px solid var(--line); background: #f8faf9; color: var(--ink); border-radius: 10px; padding: 9px; font-weight: 660; font-size: .82rem; }
+    .empty { min-height: 330px; display: grid; place-items: center; text-align: center; background: white; border: 1px dashed #c5d1cf; border-radius: 16px; padding: 34px; }
+    .empty-orbit { width: 84px; height: 84px; border: 1px solid #aac6c0; border-radius: 50%; margin: 0 auto 19px; position: relative; box-shadow: 0 0 0 14px #eef8f5, 0 0 0 28px #f7fbfa; }
+    .empty-orbit::before { content: ""; position: absolute; width: 8px; height: 8px; border-radius: 50%; background: var(--amber); left: 56px; top: 9px; }
+    .empty h3 { margin: 0 0 7px; font-family: ui-serif, "Songti SC", STSong, serif; font-size: 1.28rem; }
+    .empty p { margin: 0; color: var(--muted); max-width: 420px; }
+    .hidden { display: none !important; }
+    .toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 18px); opacity: 0; pointer-events: none; background: var(--ink); color: white; border-radius: 12px; padding: 11px 16px; font-size: .86rem; transition: .2s ease; z-index: 10; box-shadow: var(--shadow); }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+    footer { max-width: 1240px; margin: 0 auto; padding: 0 clamp(18px,4vw,52px) 40px; color: var(--muted); font-size: .78rem; }
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; gap: 26px; }
+      .profile-card { border-left: 0; border-top: 1px solid #36505a; padding: 20px 0 0; }
+      .filters { grid-template-columns: 1fr 1fr; }
+      .content-grid { grid-template-columns: 1fr; }
+      .side-panel { position: static; grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 620px) {
+      .masthead { padding-bottom: 60px; }
+      .topline { align-items: flex-start; }
+      .update-pill { max-width: 145px; text-align: right; border: 0; padding: 3px 0; }
+      .hero { padding-top: 42px; }
+      h1 { font-size: 3rem; }
+      main { margin-top: -30px; }
+      .control-deck { padding: 15px; }
+      .stats { grid-template-columns: 1fr 1fr; gap: 16px 0; }
+      .stat { padding: 0 12px; }
+      .stat:nth-child(2) { border-right: 0; }
+      .stat:nth-child(3) { padding-left: 4px; }
+      .filters { grid-template-columns: 1fr; }
+      .side-panel { grid-template-columns: 1fr; }
+      .job-top { grid-template-columns: 1fr; }
+      .deadline { text-align: left; }
+      .deadline span, .deadline strong { display: inline; margin-right: 5px; }
+      .job-actions { flex-wrap: wrap; }
+      .primary-link { width: 100%; margin-left: 0; order: -1; }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="topline">
+      <div class="brand">
+        <svg class="radar-mark" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="20" cy="20" r="7" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".55"/><path d="M20 20 30 10" stroke="#ffb24a" stroke-width="2.5" stroke-linecap="round"/><circle cx="20" cy="20" r="2.5" fill="white"/></svg>
+        <span>浙里有岗</span>
+      </div>
+      <div class="update-pill" id="lastUpdated">尚未完成首次扫描</div>
+    </div>
+    <div class="hero">
+      <div>
+        <div class="eyebrow">Taizhou · Hangzhou · Ningbo Job Radar</div>
+        <h1>编制高校国企，<br>替你盯住。</h1>
+        <p class="hero-copy">台州优先，杭州与宁波补充；只收录与你专业相关且仍在报名或即将报名的编制、高校、事业单位和国企岗位。</p>
+      </div>
+      <div class="profile-card">
+        <span>匹配档案</span>
+        <p>本科 · 新闻传播 / 网络与新媒体</p>
+        <p>研究生 · 戏剧与影视学 / 电影学</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="control-deck" aria-label="岗位概览与筛选">
+      <div class="stats">
+        <div class="stat"><div class="stat-label">当前岗位</div><div class="stat-value" id="statTotal">0</div></div>
+        <div class="stat"><div class="stat-label">高度匹配</div><div class="stat-value" id="statHigh">0</div></div>
+        <div class="stat"><div class="stat-label">七天内截止</div><div class="stat-value" id="statSoon">0</div></div>
+        <div class="stat"><div class="stat-label">已收藏</div><div class="stat-value" id="statSaved">0</div></div>
+      </div>
+      <div class="filters">
+        <div class="field"><label for="search">搜索岗位或单位</label><input id="search" type="search" placeholder="例如：宣传、融媒体、文旅集团"></div>
+        <div class="field"><label for="region">地区</label><select id="region"><option value="all">全部地区</option><option value="台州">台州优先</option><option value="杭州">杭州</option><option value="宁波">宁波</option></select></div>
+        <div class="field"><label for="fit">匹配度</label><select id="fit"><option value="all">全部匹配度</option><option value="高度匹配">高度匹配</option><option value="可尝试">可尝试</option><option value="需咨询">需咨询</option></select></div>
+        <div class="field"><label for="progress">我的进度</label><select id="progress"><option value="all">全部岗位</option><option value="saved">仅看收藏</option><option value="applied">仅看已投递</option></select></div>
+      </div>
+    </section>
+
+    <div class="content-grid">
+      <section>
+        <div class="section-head"><h2>岗位清单</h2><small id="resultCount">0 个结果</small></div>
+        <div id="jobList" class="job-list"></div>
+        <div id="emptyState" class="empty">
+          <div>
+            <div class="empty-orbit"></div>
+            <h3>雷达正在等待首次扫描</h3>
+            <p>每周二自动检查台州、杭州和宁波的官方招考信息；其他地区不收录。</p>
+          </div>
+        </div>
+      </section>
+
+      <aside class="side-panel">
+        <div class="side-card">
+          <h3>自动更新已开启</h3>
+          <p>新岗位、公告更正和临近截止提醒都会同步到这里。</p>
+          <div class="schedule"><span class="pulse"></span><div><strong id="scheduleText">每周二 09:00</strong><span>北京时间 · 台州优先 · 杭甬补充</span></div></div>
+        </div>
+        <div class="side-card light">
+          <h3>你的进度归你保管</h3>
+          <p>收藏和已投递状态只保存在当前浏览器中，不会上传。</p>
+          <div class="side-actions">
+            <button class="wide-action" id="exportBtn">导出我的进度</button>
+            <button class="wide-action" id="importBtn">导入进度文件</button>
+            <input class="hidden" type="file" id="importFile" accept="application/json">
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+  <footer>只收录台州、杭州、宁波岗位。公告按钮尽量直达具体公告；报名之前，请再次核对专业目录、学历、年龄、经历及资格条件。</footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const EMBEDDED_DATA = {
+      "lastUpdated": "2026-09-18T18:05:00+08:00",
+      "nextScheduledCheck": "每周二 09:00（北京时间）",
+      "jobs": [
+        {"id":"tz-union-social-worker-2026","company":"台州市总工会","title":"工会社会工作者","location":"台州 · 路桥/温岭/天台/仙居/台州湾新区","employment":"工会非编合同制","count":9,"fit":"需咨询","deadline":"2026-09-29","tags":["即将报名","台州多地","40周岁以下"],"reason":"台州本地岗位，基本条件强调文字表达、组织协调和群众工作能力。","risk":"9月23日09:00开始报名；各岗位专业、经历和属地条件不同，请先核对公告职位表。","url":"https://mp.weixin.qq.com/s/UgsH_ol_uGteAemuzbpkqw"},
+        {"id":"xs-media-reporter-2026","company":"杭州市萧山区融媒体中心","title":"全媒体记者（文字方向）","location":"杭州 · 萧山","employment":"事业编","count":2,"fit":"需咨询","deadline":"2026-09-23","tags":["硕士及以上","应届/择业期","浙江户籍"],"reason":"岗位内容与新闻传播背景高度相关，但专业资格按研究生专业审核。","risk":"岗位表列有新闻传播类硕士专业，你的硕士为戏剧与影视学，存在专业不符风险，报名前务必咨询招聘单位。","url":"https://xiaoshan.pta.zj.cn:8022"},
+        {"id":"hz-radio-reporter-2026","company":"杭州之声（FM89）","title":"全媒体记者","location":"杭州","employment":"媒体单位招聘（性质待确认）","count":1,"fit":"高度匹配","deadline":"2026-09-30","tags":["专业不限","本科及以上","35周岁以下"],"reason":"采访、写作和全媒体内容生产与新闻传播训练直接相关。","risk":"公告未明确编制或用工性质；投递邮箱为 am954954@163.com。","url":"https://kandian.sina.cn/article_1665450974_6344c3de02701efcc.html"},
+        {"id":"hz-radio-newmedia-2026","company":"杭州之声（FM89）","title":"新媒体运营","location":"杭州","employment":"媒体单位招聘（性质待确认）","count":1,"fit":"高度匹配","deadline":"2026-09-30","tags":["专业不限","本科及以上","35周岁以下"],"reason":"岗位方向与网络与新媒体本科背景直接匹配。","risk":"公告未明确编制或用工性质；投递邮箱为 am954954@163.com。","url":"https://kandian.sina.cn/article_1665450974_6344c3de02701efcc.html"},
+        {"id":"hz-radio-overseas-2026","company":"杭州之声（FM89）","title":"海外账号运营","location":"杭州","employment":"媒体单位招聘（性质待确认）","count":1,"fit":"可尝试","deadline":"2026-09-30","tags":["专业不限","本科及以上","英语能力"],"reason":"新媒体内容与海外传播方向相关，可结合个人英语和平台运营经验判断。","risk":"公告未明确编制或用工性质；该岗对英语表达和海外平台经验要求较高。","url":"https://kandian.sina.cn/article_1665450974_6344c3de02701efcc.html"},
+        {"id":"hz-radio-visual-2026","company":"杭州之声（FM89）","title":"全媒体视觉运营","location":"杭州","employment":"媒体单位招聘（性质待确认）","count":1,"fit":"高度匹配","deadline":"2026-09-30","tags":["专业不限","本科及以上","视觉内容"],"reason":"视觉叙事与视频内容方向契合电影学及网络与新媒体背景。","risk":"公告未明确编制或用工性质；需结合个人拍摄、剪辑或视觉作品集判断。","url":"https://kandian.sina.cn/article_1665450974_6344c3de02701efcc.html"},
+        {"id":"tangde-2026-interactive-director","company":"浙江唐德影视股份有限公司（子公司）","title":"互动影游编导（偏架构）","location":"杭州","employment":"国有控股企业社招","count":1,"fit":"高度匹配","deadline":"","tags":["戏剧影视相关","本科及以上","1年经验"],"reason":"电影学、戏剧与影视学背景与岗位专业要求直接相关。","risk":"官网未写截止时间；要求35周岁以下和1年以上相关项目经验，投递前建议确认仍在招。","url":"https://www.tangde.com.cn/join.aspx"},
+        {"id":"tangde-2026-ai-shortdrama","company":"浙江唐德影视股份有限公司（子公司）","title":"短剧出海运营（AI漫剧制作方向）","location":"杭州","employment":"国有控股企业社招","count":1,"fit":"可尝试","deadline":"","tags":["媒体传播相关","AIGC视频","英语"],"reason":"媒体传播与戏剧影视背景相关，工作内容为AI视频制作和海外短剧运营。","risk":"官网未写截止时间；要求35周岁以下、1年以上AI漫剧或AIGC视频经验及较强英语能力。","url":"https://www.tangde.com.cn/join.aspx"},
+        {"id":"ztg-jiande-admin-2026","company":"浙江省旅游投资集团（建德项目）","title":"综合专员","location":"杭州 · 建德","employment":"省属国企社招","count":1,"fit":"可尝试","deadline":"","tags":["专业不限","大专及以上","3年经验"],"reason":"岗位重视文字写作、综合协调和宣传材料能力，和新闻传播训练有交集。","risk":"招满即止；要求3年以上相关工作经验，投递前建议确认岗位仍开放。","url":"https://www.chinaztg.com/index.php?a=index&aid=2927&c=View&m=home"}
+      ]
+    };
+
+    const state = {
+      jobs: [],
+      saved: new Set(JSON.parse(localStorage.getItem('zheli-saved') || '[]')),
+      applied: new Set(JSON.parse(localStorage.getItem('zheli-applied') || '[]'))
+    };
+
+    const $ = (id) => document.getElementById(id);
+    const escapeHtml = (value = '') => String(value).replace(/[&<>'"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));
+    const daysUntil = (date) => Math.ceil((new Date(date + 'T23:59:59+08:00') - new Date()) / 86400000);
+    const isSoon = (date) => { const d = daysUntil(date); return d >= 0 && d <= 7; };
+    const formatDate = (date) => date ? date.replaceAll('-', '.') : '以公告为准';
+
+    function persist() {
+      localStorage.setItem('zheli-saved', JSON.stringify([...state.saved]));
+      localStorage.setItem('zheli-applied', JSON.stringify([...state.applied]));
+    }
+
+    function toast(message) {
+      $('toast').textContent = message;
+      $('toast').classList.add('show');
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => $('toast').classList.remove('show'), 1900);
+    }
+
+    function jobCard(job) {
+      const saved = state.saved.has(job.id);
+      const applied = state.applied.has(job.id);
+      const fitClass = job.fit === '高度匹配' ? 'high' : job.fit === '可尝试' ? 'try' : '';
+      return `<article class="job-card">
+        <div class="job-top">
+          <div><div class="company">${escapeHtml(job.company)}</div><h3 class="job-title">${escapeHtml(job.title)}</h3></div>
+          <div class="deadline"><span>报名截止</span><strong>${escapeHtml(formatDate(job.deadline))}</strong></div>
+        </div>
+        <div class="job-meta">
+          <span class="meta">${escapeHtml(job.location)}</span><span class="meta">${escapeHtml(job.employment || '公开招聘')}</span><span class="meta">招 ${escapeHtml(job.count || '若干')} 人</span>
+        </div>
+        <div class="tags"><span class="tag ${fitClass}">${escapeHtml(job.fit)}</span>${(job.tags || []).map(t => `<span class="tag">${escapeHtml(t)}</span>`).join('')}</div>
+        <p class="job-note">${escapeHtml(job.reason || '')}${job.risk ? ` · 提醒：${escapeHtml(job.risk)}` : ''}</p>
+        <div class="job-actions">
+          <button class="action ${saved ? 'active' : ''}" data-action="save" data-id="${escapeHtml(job.id)}">${saved ? '已收藏' : '收藏'}</button>
+          <button class="action ${applied ? 'active' : ''}" data-action="apply" data-id="${escapeHtml(job.id)}">${applied ? '已投递' : '标记已投递'}</button>
+          <a class="primary-link" href="${escapeHtml(job.url)}" target="_blank" rel="noopener noreferrer">查看官方公告 ↗</a>
+        </div>
+      </article>`;
+    }
+
+    function render() {
+      const query = $('search').value.trim().toLowerCase();
+      const region = $('region').value;
+      const fit = $('fit').value;
+      const progress = $('progress').value;
+      const filtered = state.jobs.filter(job => {
+        const haystack = `${job.company} ${job.title} ${job.location} ${(job.tags || []).join(' ')}`.toLowerCase();
+        const regionMatch = region === 'all' || job.location.includes(region);
+        const fitMatch = fit === 'all' || job.fit === fit;
+        const progressMatch = progress === 'all' || (progress === 'saved' ? state.saved.has(job.id) : state.applied.has(job.id));
+        return (!query || haystack.includes(query)) && regionMatch && fitMatch && progressMatch;
+      });
+      $('jobList').innerHTML = filtered.map(jobCard).join('');
+      $('jobList').classList.toggle('hidden', filtered.length === 0);
+      $('emptyState').classList.toggle('hidden', filtered.length !== 0);
+      $('emptyState').querySelector('h3').textContent = state.jobs.length ? '没有符合当前筛选的岗位' : '雷达正在等待首次扫描';
+      $('emptyState').querySelector('p').textContent = state.jobs.length ? '换一个关键词或筛选条件试试。' : '每周二自动检查台州、杭州和宁波的官方招考信息；其他地区不收录。';
+      $('resultCount').textContent = `${filtered.length} 个结果`;
+      $('statTotal').textContent = state.jobs.length;
+      $('statHigh').textContent = state.jobs.filter(j => j.fit === '高度匹配').length;
+      $('statSoon').textContent = state.jobs.filter(j => isSoon(j.deadline)).length;
+      $('statSaved').textContent = state.saved.size;
+    }
+
+    async function loadJobs() {
+      try {
+        let data = EMBEDDED_DATA;
+        if (location.protocol !== 'file:') {
+          const res = await fetch(`./jobs.json?v=${Date.now()}`);
+          if (!res.ok) throw new Error('load failed');
+          data = await res.json();
+        }
+        state.jobs = Array.isArray(data.jobs) ? data.jobs : [];
+        $('scheduleText').textContent = (data.nextScheduledCheck || '每周二 09:00（北京时间）').replace('（北京时间）', '');
+        if (data.lastUpdated) $('lastUpdated').textContent = `最近更新 ${new Date(data.lastUpdated).toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' })}`;
+      } catch (error) {
+        $('lastUpdated').textContent = '数据暂时无法读取';
+      }
+      render();
+    }
+
+    ['search', 'region', 'fit', 'progress'].forEach(id => $(id).addEventListener(id === 'search' ? 'input' : 'change', render));
+    $('jobList').addEventListener('click', (event) => {
+      const button = event.target.closest('button[data-action]');
+      if (!button) return;
+      const collection = button.dataset.action === 'save' ? state.saved : state.applied;
+      if (collection.has(button.dataset.id)) collection.delete(button.dataset.id); else collection.add(button.dataset.id);
+      persist(); render();
+      toast(button.dataset.action === 'save' ? '收藏状态已更新' : '投递进度已更新');
+    });
+    $('exportBtn').addEventListener('click', () => {
+      const blob = new Blob([JSON.stringify({saved:[...state.saved], applied:[...state.applied]}, null, 2)], {type:'application/json'});
+      const link = document.createElement('a'); link.href = URL.createObjectURL(blob); link.download = '浙里有岗-我的进度.json'; link.click(); URL.revokeObjectURL(link.href);
+      toast('进度文件已导出');
+    });
+    $('importBtn').addEventListener('click', () => $('importFile').click());
+    $('importFile').addEventListener('change', async (event) => {
+      try {
+        const data = JSON.parse(await event.target.files[0].text());
+        state.saved = new Set(Array.isArray(data.saved) ? data.saved : []);
+        state.applied = new Set(Array.isArray(data.applied) ? data.applied : []);
+        persist(); render(); toast('进度已恢复');
+      } catch (error) { toast('文件格式不正确'); }
+      event.target.value = '';
+    });
+    loadJobs();
+  </script>
+</body>
+</html>
