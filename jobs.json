@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-20T13:35:00+08:00",
+  "lastUpdated": "2026-09-22T11:06:45+08:00",
   "nextScheduledCheck": "每周二 09:00（北京时间）",
   "jobs": [
     {
@@ -18,19 +18,37 @@
       "url": "https://mp.weixin.qq.com/s/UgsH_ol_uGteAemuzbpkqw"
     },
     {
-      "id": "zju-social-science-admin-2026",
-      "company": "浙江大学社会科学研究院",
-      "title": "管理辅助",
-      "location": "杭州 · 紫金港校区",
+      "id": "zjjc-art-design-teacher-2026-2",
+      "company": "浙江建设技师学院",
+      "title": "艺术设计学院专任教师",
+      "location": "杭州 · 富阳",
+      "employment": "事业单位报备员额编内用人",
+      "staffing": "establishment",
+      "count": 1,
+      "fit": "高度匹配",
+      "deadline": "",
+      "tags": ["电影学可报", "研究生/硕士", "教师岗", "非党员限定", "正在报名"],
+      "reason": "专业目录明确列出电影学（130109）、电影（135402）、广播电视艺术学、广播电视等；你的电影学硕士可直接对应。",
+      "risk": "9月18日起接受报名，暂未设固定截止日，学院会按报名情况随时关闭；未取得教师资格证者须在首次聘用合同签订后2年内取得中职及以上教师资格证。咨询：0571-88124130。",
+      "url": "https://rs.zjjaxx.com:65080/apply/getNotice.action?keycode=25c65316-621c-4e32-997a-87af105f7a74",
+      "applyUrl": "https://rs.zjjaxx.com:65080/apply/index.action",
+      "attachmentUrl": "https://rs.zjjaxx.com:65080/apply/downloadAccessory.action?keycode=5d0e9ed8-acc5-4550-b819-5d1dceb8e79b"
+    },
+    {
+      "id": "zafu-training-specialist-2026-09",
+      "company": "浙江农林大学继续教育学院",
+      "title": "培训专员",
+      "location": "杭州 · 临安",
       "employment": "高校劳务派遣（无编制）",
       "staffing": "nonstaff",
       "count": 1,
-      "fit": "高度匹配",
-      "deadline": "2026-09-20",
-      "tags": ["今天截止", "硕士及以上", "专业不限", "不要求党员"],
-      "reason": "负责文科科研项目、经费管理等工作，要求文字写作、沟通协调和计算机应用能力，与你的学历及文字内容能力相符。",
-      "risk": "公告未标具体截止时刻，建议今天立即投递至 zhoushi@zju.edu.cn，邮件主题为“岗位应聘+姓名”；该岗为劳务派遣，无事业编制。",
-      "url": "https://ehr.zju.edu.cn/vuejs/recruitment/position-detail.htm?id=N1875745976737595563"
+      "fit": "可尝试",
+      "deadline": "2026-09-23",
+      "tags": ["专业不限", "本科及以上", "非党员限定", "明日截止"],
+      "reason": "专业不限，本科及以上即可；培训项目洽谈、组织管理和材料归档与传播、项目执行能力有交集。",
+      "risk": "截止到9月23日11:30；采用劳务派遣，无事业编制。按官方公告准备报名表和证明材料，发送至 jxjy@zafu.edu.cn。",
+      "url": "https://jxjy.zafu.edu.cn/info/1035/5689.htm",
+      "applyUrl": "mailto:jxjy@zafu.edu.cn"
     },
     {
       "id": "xs-media-reporter-2026",
