@@ -1,57 +1,22 @@
 {
-  "lastUpdated": "2026-10-08T13:05:32+08:00",
+  "lastUpdated": "2026-10-12T12:19:21+08:00",
   "nextScheduledCheck": "每周二 09:00（北京时间）",
   "jobs": [
     {
-      "id": "tz-city-investment-operations-b-2026-2",
-      "company": "台州市城投科技发展有限公司",
-      "title": "运营服务专员B",
-      "location": "台州",
-      "employment": "台州市属国企用工（非事业编）",
+      "id": "zjrm-art-bookstore-operator-2026-10",
+      "company": "浙江人民美术出版社（浙江出版联合集团）",
+      "title": "图书网店运营",
+      "location": "杭州 · 拱墅区",
+      "employment": "省属国企用工（非事业编）",
       "staffing": "stateowned",
       "count": 1,
       "fit": "需咨询",
-      "deadline": "2026-10-08",
-      "tags": ["今日17:00截止", "新闻传播学类", "本科及以上", "2年相关经历"],
-      "reason": "专业条件明确包含新闻传播学类，你的网络与新媒体本科可对应；工作方向为活动策划、视觉设计或新媒体运营。",
-      "risk": "今日（10月8日）17:00截止；须为1995年9月1日（含）后出生，并具备2年及以上活动策划、视觉设计或新媒体运营经历；你的相关工作年限未知，报名前应确认经历证明是否满足。",
-      "url": "https://www.tprcw.com/article/5391.html",
-      "applyUrl": "https://kw.tzrc.cn",
-      "attachmentUrl": "taizhou-city-investment-jobs-2026-batch2.xlsx"
-    },
-    {
-      "id": "tz-talent-market-video-editor-2026-2",
-      "company": "台州市人才市场有限公司",
-      "title": "编辑摄像",
-      "location": "台州",
-      "employment": "台州市属国企用工（非事业编）",
-      "staffing": "stateowned",
-      "count": 1,
-      "fit": "需咨询",
-      "deadline": "2026-10-08",
-      "tags": ["今日17:00截止", "专业不限", "本科及以上", "2年影视经历"],
-      "reason": "视频编导、摄像、剪辑方向与你的电影学及网络与新媒体背景高度契合，且岗位专业不限。",
-      "risk": "今日（10月8日）17:00截止；须为1995年9月1日（含）后出生，并具备2年及以上视频编导、摄像或剪辑经历；设笔试和技能测试，你的相关工作年限未知。",
-      "url": "https://www.tprcw.com/article/5395.html",
-      "applyUrl": "https://kw.tzrc.cn",
-      "attachmentUrl": "taizhou-science-investment-jobs-2026-batch2.xlsx"
-    },
-    {
-      "id": "zjjc-art-design-teacher-2026-2",
-      "company": "浙江建设技师学院",
-      "title": "艺术设计学院专任教师",
-      "location": "杭州 · 富阳",
-      "employment": "事业单位报备员额编内用人",
-      "staffing": "establishment",
-      "count": 1,
-      "fit": "高度匹配",
-      "deadline": "",
-      "tags": ["电影学可报", "研究生/硕士", "教师岗", "不要求党员", "正在报名"],
-      "reason": "专业目录明确列出电影学（130109）、电影（135402）、广播电视艺术学、广播电视等；你的电影学硕士可直接对应。",
-      "risk": "9月18日起接受报名，暂未设固定截止日，学院会按报名情况随时关闭；未取得教师资格证者须在首次聘用合同签订后2年内取得中职及以上教师资格证。咨询：0571-88124130。",
-      "url": "https://rs.zjjaxx.com:65080/apply/getNotice.action?keycode=25c65316-621c-4e32-997a-87af105f7a74",
-      "applyUrl": "https://rs.zjjaxx.com:65080/department/detailInfo.action?uuid=8a30f0e6-36f1-4d71-b61c-84855901af6d",
-      "attachmentUrl": "https://rs.zjjaxx.com:65080/apply/downloadAccessory.action?keycode=5d0e9ed8-acc5-4550-b819-5d1dceb8e79b"
+      "deadline": "2026-10-25",
+      "tags": ["报名至10月25日", "本科及以上", "图书电商运营", "3年以上经验"],
+      "reason": "负责线上店铺运营、营销活动、流量转化和内容商品维护；专业未限定，网络与新媒体背景可尝试，但核心门槛是图书电商实操经验。",
+      "risk": "硬性要求3年以上图书电商运营经验并有店长工作经验，另需熟悉活动策划、数据分析、平台推广及客服流程。若缺少这些经历，匹配度较低；建议先向招聘方确认经历是否可替代。报名截止2026年10月25日。",
+      "url": "https://bm.manmankan.com/hangzhou/202609/33472.shtml",
+      "applyUrl": "https://xyz.51job.com/External/Apply.aspx?CtmID=9595913"
     },
     {
       "id": "tangde-2026-aigc-director",
@@ -113,22 +78,6 @@
       "reason": "岗位重视文字写作、综合协调和宣传材料能力，和新闻传播训练有交集。",
       "risk": "招满即止；要求3年以上相关工作经验，投递前建议确认岗位仍开放。",
       "url": "https://www.chinaztg.com/index.php?a=index&aid=2927&c=View&m=home"
-    },
-    {
-      "id": "eitech-photographer-videographer-2026-09",
-      "company": "宁波东方理工大学",
-      "title": "摄影摄像岗",
-      "location": "宁波",
-      "employment": "高校市场化聘用（无事业编）",
-      "staffing": "nonstaff",
-      "count": 1,
-      "fit": "需咨询",
-      "deadline": "",
-      "tags": ["招满即止", "本科及以上", "影视摄影相关", "5年经历"],
-      "reason": "重要活动摄影摄像、短视频策划拍摄剪辑与调色等职责，与你的电影学和网络与新媒体背景直接相关。",
-      "risk": "硬性要求5年以上摄影工作经验，并需提交5—8件摄影作品；有省级以上媒体摄影经历、签约摄影师或获奖经历者优先。",
-      "url": "https://www.eitech.edu.cn/2026/0920/c442a10075/page.htm",
-      "applyUrl": "mailto:news@eitech.edu.cn?cc=staff-hire@eitech.edu.cn&subject=%E5%A7%93%E5%90%8D%2B%E6%91%84%E5%BD%B1%E6%91%84%E5%83%8F%E5%B2%97%2B%E6%8B%9B%E8%81%98%E4%BF%A1%E6%81%AF%E6%9D%A5%E6%BA%90"
     }
   ]
 }
