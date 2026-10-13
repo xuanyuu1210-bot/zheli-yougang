@@ -1,5 +1,22 @@
 {
   "lastUpdated": "2026-10-13T16:25:45+08:00",
   "nextScheduledCheck": "每周二 09:00（北京时间）",
-  "jobs": []
+  "jobs": [
+    {
+      "id": "tangde-2026-aigc-director",
+      "company": "浙江唐德影视股份有限公司（子公司）",
+      "title": "AIGC编导/导演",
+      "location": "杭州",
+      "employment": "国有控股企业用工（非事业编）",
+      "staffing": "stateowned",
+      "count": 1,
+      "fit": "需咨询",
+      "deadline": "",
+      "tags": ["9月20日发布", "35周岁及以下", "学历不限", "影视编导/AIGC"],
+      "reason": "岗位面向短剧、网剧、短视频、广告片等内容创作，电影学训练相关；公告未写明必须满1年工作经历。",
+      "risk": "公告要求有短剧、网剧、短视频、广告片或节目策划经验，但未写明年限或社保门槛。你目前无满1年工作经验，需先向招聘方确认课程项目、作品集能否满足该经验条件；无相关作品/项目时不建议盲投。",
+      "url": "https://www.tangde.com.cn/join.aspx",
+      "applyUrl": "mailto:583833857@qq.com,hr@tangde.com.cn?subject=%E5%A7%93%E5%90%8D%2BAIGC%E7%BC%96%E5%AF%BC%2B%E5%BA%94%E8%81%98"
+    }
+  ]
 }
