@@ -1,7 +1,30 @@
 {
-  "lastUpdated": "2026-10-27T09:00:00+08:00",
+  "lastUpdated": "2026-10-29T10:55:00+08:00",
   "nextScheduledCheck": "每周二 09:00（北京时间）",
   "jobs": [
+    {
+      "id": "taizhou-tech-digital-media-teacher-2026h2",
+      "company": "台州科技职业学院（公益二类事业单位）",
+      "title": "数字媒体技术教师",
+      "location": "台州",
+      "employment": "有事业编制（报备员额，列入事业单位编制实名制管理）",
+      "staffing": "establishment",
+      "count": 1,
+      "fit": "高度匹配",
+      "deadline": "2026-11-19",
+      "tags": [
+        "报名中：10月29日9:00—11月19日16:30",
+        "硕士研究生及以上",
+        "专业明确含电影学",
+        "事业编制（报备员额）",
+        "数字媒体专业技能测试"
+      ],
+      "reason": "计划二第6岗，硕士研究生及以上，专业要求明确包括“电影学”，与你的戏剧与影视学（电影学）硕士专业直接对应；1名。公告未设置1年以上工作经验要求，也未提党员要求。",
+      "risk": "硕士年龄须在38周岁及以下（1987年10月26日及以后出生）。考试包含《数字媒体技术岗位专业知识》笔试和专业技能测试，另有试讲、面试；需确认自己的年龄资格并准备相关技术能力。资格复审及专业认定以学校审核为准。公告未将教师资格证列为该岗位报名条件。",
+      "url": "https://rsj.zjtz.gov.cn/col/col1229045970/art/2026/art_0412725898924ea5aac7ed90f20ef339.html",
+      "applyUrl": "http://qssy.zjks.com/tyzpwb/",
+      "attachmentUrl": "https://rsj.zjtz.gov.cn/api-gateway/jpaas-web-server/front/document/download?fileUrl=YW5UzzlvCwcM%2FNHHX%2FtT6IDJRGlJQE0wILKAC8KsVENnLVGbwqI%2FtRdeEeBvjQjFwSGWBmuaVxpbb1mMSeN0b7HGYKTynIkfjrg5xuFUcHclBKm%2B5Z9MzITXxv79nCtPGwf2gVl%2FIpe4n1q784EdLiRJaaOe1Tn3ANDZYanx7sU%3D&fileName=%E9%99%84%E4%BB%B61+%E5%8F%B0%E5%B7%9E%E7%A7%91%E6%8A%80%E8%81%8C%E4%B8%9A%E5%AD%A6%E9%99%A22026%E5%B9%B4%E4%B8%8B%E5%8D%8A%E5%B9%B4%E5%85%AC%E5%BC%80%E6%8B%9B%E8%81%98%E8%AE%A1%E5%88%92.docx"
+    },
     {
       "id": "taizhou-soe-publicity-planning-2026-oct",
       "company": "台州市人才市场有限公司（台州市属国企招聘岗位）",
